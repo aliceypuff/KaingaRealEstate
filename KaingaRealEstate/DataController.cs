@@ -73,6 +73,42 @@ namespace KaingaRealEstate
             suburbView.Sort = "suburbID";
             dsKainga.EnforceConstraints = true;
         }
+        public void UpdateSeller()
+        {
+            daSeller.Update(dsKainga, "SELLER");
+        }
+        public void UpdateAgent()
+        {
+            daAgent.Update(dsKainga, "AGENT");
+        }
+        public void UpdateBuyer()
+        {
+            daBuyer.Update(dsKainga, "BUYER");
+        }
+        public void UpdateBuyerSuburb()
+        {
+            daBuyerSuburb.Update(dsKainga, "BUYERSUBURB");
+        }
+        public void UpdateBuyerCategory()
+        {
+            daBuyerCategory.Update(dsKainga, "BUYERCATEGORY");
+        }
+        public void UpdateProperty()
+        {
+            daProperty.Update(dsKainga, "PROPERTY");
+        }
+        public void UpdateOffer()
+        {
+            daOffer.Update(dsKainga, "OFFER");
+        }
+        public void UpdateSuburb()
+        {
+            daSuburb.Update(dsKainga, "SUBURB");
+        }
+        public void UpdateCategory()
+        {
+            daCategory.Update(dsKainga, "CATEGORY");
+        }
 
         private void oleDbDataAdapter1_RowUpdated(object sender, System.Data.OleDb.OleDbRowUpdatedEventArgs e)
         {

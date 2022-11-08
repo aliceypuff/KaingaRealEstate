@@ -88,6 +88,7 @@ namespace KaingaRealEstate
             this.lstSuburbsAssigned.Name = "lstSuburbsAssigned";
             this.lstSuburbsAssigned.Size = new System.Drawing.Size(486, 99);
             this.lstSuburbsAssigned.TabIndex = 37;
+            this.lstSuburbsAssigned.SelectedIndexChanged += new System.EventHandler(this.lstSuburbsAssigned_SelectedIndexChanged);
             // 
             // txtCreditStatus
             // 
@@ -208,6 +209,7 @@ namespace KaingaRealEstate
             this.btnRemoveBuyerSuburb.TabIndex = 24;
             this.btnRemoveBuyerSuburb.Text = "Remove Buyer Suburb";
             this.btnRemoveBuyerSuburb.UseVisualStyleBackColor = true;
+            this.btnRemoveBuyerSuburb.Click += new System.EventHandler(this.btnRemoveBuyerSuburb_Click);
             // 
             // RemoveBuyerSuburbForm
             // 
