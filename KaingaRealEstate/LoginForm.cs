@@ -106,5 +106,16 @@ namespace KaingaRealEstate
                 txtPassword.UseSystemPasswordChar = false;
             }
         }
+
+        private void btnLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnLogin.PerformClick();
+        }
     }
 }

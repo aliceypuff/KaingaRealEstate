@@ -44,6 +44,8 @@ namespace KaingaRealEstate
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblrequired1 = new System.Windows.Forms.Label();
             this.lblrequired2 = new System.Windows.Forms.Label();
+            this.kaingaRealEstateDataSet = new KaingaRealEstate.KaingaRealEstateDataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.kaingaRealEstateDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // lblInstruction1
@@ -195,11 +197,16 @@ namespace KaingaRealEstate
             this.lblrequired2.TabIndex = 58;
             this.lblrequired2.Text = "*";
             // 
+            // kaingaRealEstateDataSet
+            // 
+            this.kaingaRealEstateDataSet.DataSetName = "KaingaRealEstateDataSet";
+            this.kaingaRealEstateDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // UpdateSuburbForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 423);
+            this.ClientSize = new System.Drawing.Size(762, 431);
             this.Controls.Add(this.lblrequired2);
             this.Controls.Add(this.lblrequired1);
             this.Controls.Add(this.lblInstruction1);
@@ -220,6 +227,7 @@ namespace KaingaRealEstate
             this.Name = "UpdateSuburbForm";
             this.Text = "Update Suburbs";
             this.Load += new System.EventHandler(this.UpdateSuburbForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.kaingaRealEstateDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +250,6 @@ namespace KaingaRealEstate
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblrequired1;
         private System.Windows.Forms.Label lblrequired2;
+        private KaingaRealEstateDataSet kaingaRealEstateDataSet;
     }
 }

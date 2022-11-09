@@ -215,7 +215,7 @@ namespace KaingaRealEstate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 563);
+            this.ClientSize = new System.Drawing.Size(762, 561);
             this.Controls.Add(this.lblInstruction1);
             this.Controls.Add(this.lblInstruction2);
             this.Controls.Add(this.lstSuburbsAssigned);

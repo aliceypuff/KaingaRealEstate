@@ -71,8 +71,6 @@ namespace KaingaRealEstate
                 txtSuburbID.Text = drSuburb["suburbID"].ToString();
                 txtSuburbName.Text = drSuburb["suburbName"].ToString();
                 txtPostcode.Text = drSuburb["postcode"].ToString();
-                // load suburbs
-                LoadSuburbs();
             }
         }
         private void btnUpdateSuburb_Click(object sender, EventArgs e)

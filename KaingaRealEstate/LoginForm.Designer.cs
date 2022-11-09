@@ -64,7 +64,7 @@ namespace KaingaRealEstate
             this.chkShow.AutoSize = true;
             this.chkShow.Location = new System.Drawing.Point(411, 215);
             this.chkShow.Name = "chkShow";
-            this.chkShow.Size = new System.Drawing.Size(77, 28);
+            this.chkShow.Size = new System.Drawing.Size(62, 23);
             this.chkShow.TabIndex = 13;
             this.chkShow.Text = "Show";
             this.chkShow.UseVisualStyleBackColor = true;
@@ -79,13 +79,14 @@ namespace KaingaRealEstate
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(237, 32);
             this.txtPassword.TabIndex = 12;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(141, 149);
             this.txtUsername.MaxLength = 30;
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(237, 32);
+            this.txtUsername.Size = new System.Drawing.Size(237, 27);
             this.txtUsername.TabIndex = 11;
             // 
             // lblPassword
@@ -93,7 +94,7 @@ namespace KaingaRealEstate
             this.lblPassword.AutoSize = true;
             this.lblPassword.Location = new System.Drawing.Point(44, 212);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(94, 24);
+            this.lblPassword.Size = new System.Drawing.Size(75, 19);
             this.lblPassword.TabIndex = 10;
             this.lblPassword.Text = "Password:";
             this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -103,7 +104,7 @@ namespace KaingaRealEstate
             this.lblUsername.AutoSize = true;
             this.lblUsername.Location = new System.Drawing.Point(38, 152);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(100, 24);
+            this.lblUsername.Size = new System.Drawing.Size(79, 19);
             this.lblUsername.TabIndex = 9;
             this.lblUsername.Text = "Username:";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -115,14 +116,14 @@ namespace KaingaRealEstate
             this.lblTitle.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.lblTitle.Location = new System.Drawing.Point(134, 25);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(244, 74);
+            this.lblTitle.Size = new System.Drawing.Size(196, 58);
             this.lblTitle.TabIndex = 8;
             this.lblTitle.Text = "Kāinga Real Estate\r\nLogin Page";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 374);
             this.Controls.Add(this.btnLogin);
@@ -139,6 +140,7 @@ namespace KaingaRealEstate
             this.Text = "Kāinga Real Estate";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
