@@ -89,17 +89,8 @@ namespace KaingaRealEstate
         }
         private void btnUpdateAgent_Click(object sender, EventArgs e)
         {
-            if (cboAgent.SelectedIndex == 0) // if the agent is not selected cannot click
-            {
-                // handle case where no agent has been selected
-                MessageBox.Show("Please select an agent to continue.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            //else if (txtAgentID.Text == "" || txtLastName.Text == "" || txtFirstName.Text == "" || txtStreetAddress.Text == "" || txtSuburb.Text == "" || txtEmail.Text == "" || txtPhone.Text == "")
-            //{
-            //    // handle cases where any of the input fields are empty
-            //    MessageBox.Show("One or more field is blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            else
+            bool detailValid = ValidateChildren(ValidationConstraints.Enabled);
+            if (detailValid)
             {
                 // get data row for selected agent
                 DataRow updateAgentRow = DC.dtAgent.Rows[cmAgent.Position];
