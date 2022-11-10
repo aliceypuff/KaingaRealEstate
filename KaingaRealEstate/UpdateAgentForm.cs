@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +18,7 @@ namespace KaingaRealEstate
         private AssistantAdministratorMainForm frmMenu;
         private int aAgentID;
         private CurrencyManager cmAgent;
+
         public UpdateAgentForm(DataController dc, AssistantAdministratorMainForm mnu)
         {
             InitializeComponent();
@@ -53,7 +56,6 @@ namespace KaingaRealEstate
                 cboAgent.Items.Add(drAgent["agentID"] + (" ") + drAgent["lastName"] + (" ") + drAgent["firstName"]);
             }
         }
-
         private void cboAgent_SelectedIndexChanged(object sender, EventArgs e)
         {
             string agent;
@@ -82,8 +84,13 @@ namespace KaingaRealEstate
                 cboCert.Text = drAgent["certification"].ToString();
             }
         }
+        private bool IsAlphaNum()
+        {
+            return string.IsNullOrEmpty(txtLastName.Text);
+        }
         private void btnUpdateAgent_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(IsAlphaNum().ToString());
             if (cboAgent.SelectedIndex == 0) // cannot click it if the agent is not selected 
             {
                 // handle case where no agent has been selected
@@ -123,6 +130,64 @@ namespace KaingaRealEstate
         {
             ClearFields();
             LoadAgents();
+        }
+
+        private void tbValidation(object sender, CancelEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            string tbName = tb.Name;
+            Label tbLabel = this.Controls.Find("lbl" + tbName.Substring(2), true)[0] as Label;
+
+            if (validateContent(tb))
+            {
+                e.Cancel = false;
+                errorProviderDetails.SetError(tb, null);
+            }
+            else
+            {
+                e.Cancel = true;
+                tb.Focus();
+                errorProviderDetails.SetError(tb, $"{tbLabel.Text} is incorrect or missing.");
+            }
+        }
+        private bool validateContent(TextBox tb)
+        {
+            string tbName = tb.Name;
+            bool fieldIsValid = true;
+
+            if (string.IsNullOrEmpty(tb.Text))
+            {
+                fieldIsValid = false;
+            }
+
+            else if (tbName == "txtEmail")
+            {
+                string email = tb.Text;
+                fieldIsValid = isEmailValid(email);
+            }
+
+            else if (tbName == "txtPhone")
+            {
+                string phoneNumber = tb.Text;
+                Regex regex = new Regex(@"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$");
+                Match match = regex.Match(phoneNumber);
+
+                fieldIsValid = match.Success;
+            }
+
+            return fieldIsValid;
+        }
+        private bool isEmailValid(string emailAddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailAddress);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
     }
 

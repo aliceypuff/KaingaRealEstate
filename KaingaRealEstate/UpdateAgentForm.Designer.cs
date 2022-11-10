@@ -29,6 +29,7 @@ namespace KaingaRealEstate
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblrequired2 = new System.Windows.Forms.Label();
             this.lblrequired1 = new System.Windows.Forms.Label();
             this.lblInstruction1 = new System.Windows.Forms.Label();
@@ -61,7 +62,11 @@ namespace KaingaRealEstate
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buyercategoryTableAdapter1 = new KaingaRealEstate.KaingaRealEstateDataSetTableAdapters.BUYERCATEGORYTableAdapter();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.errorProviderDetails = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nudSalary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // lblrequired2
@@ -125,6 +130,7 @@ namespace KaingaRealEstate
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(272, 27);
             this.txtLastName.TabIndex = 68;
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.tbValidation);
             // 
             // txtAgentID
             // 
@@ -390,11 +396,39 @@ namespace KaingaRealEstate
             // 
             this.buyercategoryTableAdapter1.ClearBeforeFill = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(612, 296);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 19);
+            this.label5.TabIndex = 91;
+            this.label5.Text = "*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(544, 260);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 19);
+            this.label6.TabIndex = 92;
+            this.label6.Text = "*";
+            // 
+            // errorProviderDetails
+            // 
+            this.errorProviderDetails.ContainerControl = this;
+            // 
             // UpdateAgentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 497);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -432,6 +466,7 @@ namespace KaingaRealEstate
             this.Text = "Update Agents";
             this.Load += new System.EventHandler(this.UpdateAgentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudSalary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,5 +506,8 @@ namespace KaingaRealEstate
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private KaingaRealEstateDataSetTableAdapters.BUYERCATEGORYTableAdapter buyercategoryTableAdapter1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ErrorProvider errorProviderDetails;
     }
 }
