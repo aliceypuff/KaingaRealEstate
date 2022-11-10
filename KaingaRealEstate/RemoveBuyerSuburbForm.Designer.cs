@@ -124,6 +124,7 @@ namespace KaingaRealEstate
             // 
             // cboBuyer
             // 
+            this.cboBuyer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBuyer.FormattingEnabled = true;
             this.cboBuyer.Location = new System.Drawing.Point(199, 103);
             this.cboBuyer.Name = "cboBuyer";
@@ -193,6 +194,7 @@ namespace KaingaRealEstate
             // 
             // btnReturn
             // 
+            this.btnReturn.CausesValidation = false;
             this.btnReturn.Location = new System.Drawing.Point(454, 469);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(231, 48);

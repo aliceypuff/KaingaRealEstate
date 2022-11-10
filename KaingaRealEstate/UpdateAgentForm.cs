@@ -55,6 +55,8 @@ namespace KaingaRealEstate
             {
                 cboAgent.Items.Add(drAgent["agentID"] + (" ") + drAgent["lastName"] + (" ") + drAgent["firstName"]);
             }
+            cboCert.Items.Add("Yes");
+            cboCert.Items.Add("No");
         }
         private void cboAgent_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -83,24 +85,20 @@ namespace KaingaRealEstate
                 nudSalary.Text = drAgent["salary"].ToString();
                 cboCert.Text = drAgent["certification"].ToString();
             }
-        }
-        private bool IsAlphaNum()
-        {
-            return string.IsNullOrEmpty(txtLastName.Text);
+            EnableUpdate(this);
         }
         private void btnUpdateAgent_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(IsAlphaNum().ToString());
-            if (cboAgent.SelectedIndex == 0) // cannot click it if the agent is not selected 
+            if (cboAgent.SelectedIndex == 0) // if the agent is not selected cannot click
             {
                 // handle case where no agent has been selected
-                MessageBox.Show("An agent hasn't been selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select an agent to continue.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (txtAgentID.Text == "" || txtLastName.Text == "" || txtFirstName.Text == "" || txtStreetAddress.Text == "" || txtSuburb.Text == "" || txtEmail.Text == "" || txtPhone.Text == "")
-            {
-                // handle cases where any of the input fields are empty
-                MessageBox.Show("One or more field is blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //else if (txtAgentID.Text == "" || txtLastName.Text == "" || txtFirstName.Text == "" || txtStreetAddress.Text == "" || txtSuburb.Text == "" || txtEmail.Text == "" || txtPhone.Text == "")
+            //{
+            //    // handle cases where any of the input fields are empty
+            //    MessageBox.Show("One or more field is blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
             else
             {
                 // get data row for selected agent
@@ -125,18 +123,42 @@ namespace KaingaRealEstate
                 }
             }
         }
-
+        private void DisableUpdate(Control parent)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    c.Enabled = false;
+                }
+            }
+            nudSalary.Enabled = false;
+            cboCert.Enabled = false;
+        }
+        private void EnableUpdate(Control parent)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    c.Enabled = true;
+                }
+            }
+            nudSalary.Enabled = true;
+            cboCert.Enabled = true;
+        }
         private void UpdateAgentForm_Load(object sender, EventArgs e)
         {
             ClearFields();
             LoadAgents();
+            DisableUpdate(this);
         }
 
         private void tbValidation(object sender, CancelEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             string tbName = tb.Name;
-            Label tbLabel = this.Controls.Find("lbl" + tbName.Substring(2), true)[0] as Label;
+            Label tbLabel = this.Controls.Find("lbl" + tbName.Substring(3), true)[0] as Label;
 
             if (validateContent(tb))
             {

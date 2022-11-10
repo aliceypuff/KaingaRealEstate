@@ -40,13 +40,13 @@ namespace KaingaRealEstate
             this.cboAgent = new System.Windows.Forms.ComboBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
-            this.lblAgentD = new System.Windows.Forms.Label();
+            this.lblAgentID = new System.Windows.Forms.Label();
             this.lblAgent = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnUpdateAgent = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtStreetAddress = new System.Windows.Forms.TextBox();
-            this.lblSA = new System.Windows.Forms.Label();
+            this.lblStreetAddress = new System.Windows.Forms.Label();
             this.txtSuburb = new System.Windows.Forms.TextBox();
             this.lblSuburb = new System.Windows.Forms.Label();
             this.lblSalary = new System.Windows.Forms.Label();
@@ -122,6 +122,7 @@ namespace KaingaRealEstate
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(272, 27);
             this.txtFirstName.TabIndex = 69;
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.tbValidation);
             // 
             // txtLastName
             // 
@@ -142,6 +143,7 @@ namespace KaingaRealEstate
             // 
             // cboAgent
             // 
+            this.cboAgent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAgent.FormattingEnabled = true;
             this.cboAgent.Location = new System.Drawing.Point(199, 103);
             this.cboAgent.Name = "cboAgent";
@@ -169,15 +171,15 @@ namespace KaingaRealEstate
             this.lblLastName.Text = "Last Name:";
             this.lblLastName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblAgentD
+            // lblAgentID
             // 
-            this.lblAgentD.AutoSize = true;
-            this.lblAgentD.Location = new System.Drawing.Point(124, 139);
-            this.lblAgentD.Name = "lblAgentD";
-            this.lblAgentD.Size = new System.Drawing.Size(69, 19);
-            this.lblAgentD.TabIndex = 63;
-            this.lblAgentD.Text = "Agent ID:";
-            this.lblAgentD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblAgentID.AutoSize = true;
+            this.lblAgentID.Location = new System.Drawing.Point(124, 139);
+            this.lblAgentID.Name = "lblAgentID";
+            this.lblAgentID.Size = new System.Drawing.Size(69, 19);
+            this.lblAgentID.TabIndex = 63;
+            this.lblAgentID.Text = "Agent ID:";
+            this.lblAgentID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblAgent
             // 
@@ -191,6 +193,7 @@ namespace KaingaRealEstate
             // 
             // btnReturn
             // 
+            this.btnReturn.CausesValidation = false;
             this.btnReturn.Location = new System.Drawing.Point(454, 403);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(231, 48);
@@ -226,16 +229,17 @@ namespace KaingaRealEstate
             this.txtStreetAddress.Name = "txtStreetAddress";
             this.txtStreetAddress.Size = new System.Drawing.Size(486, 27);
             this.txtStreetAddress.TabIndex = 74;
+            this.txtStreetAddress.Validating += new System.ComponentModel.CancelEventHandler(this.tbValidation);
             // 
-            // lblSA
+            // lblStreetAddress
             // 
-            this.lblSA.AutoSize = true;
-            this.lblSA.Location = new System.Drawing.Point(86, 238);
-            this.lblSA.Name = "lblSA";
-            this.lblSA.Size = new System.Drawing.Size(107, 19);
-            this.lblSA.TabIndex = 75;
-            this.lblSA.Text = "Street Address:";
-            this.lblSA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblStreetAddress.AutoSize = true;
+            this.lblStreetAddress.Location = new System.Drawing.Point(86, 238);
+            this.lblStreetAddress.Name = "lblStreetAddress";
+            this.lblStreetAddress.Size = new System.Drawing.Size(107, 19);
+            this.lblStreetAddress.TabIndex = 75;
+            this.lblStreetAddress.Text = "Street Address:";
+            this.lblStreetAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtSuburb
             // 
@@ -244,6 +248,7 @@ namespace KaingaRealEstate
             this.txtSuburb.Name = "txtSuburb";
             this.txtSuburb.Size = new System.Drawing.Size(245, 27);
             this.txtSuburb.TabIndex = 76;
+            this.txtSuburb.Validating += new System.ComponentModel.CancelEventHandler(this.tbValidation);
             // 
             // lblSuburb
             // 
@@ -294,6 +299,7 @@ namespace KaingaRealEstate
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(284, 27);
             this.txtEmail.TabIndex = 81;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.tbValidation);
             // 
             // lblEmail
             // 
@@ -312,6 +318,7 @@ namespace KaingaRealEstate
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(123, 27);
             this.txtPhone.TabIndex = 83;
+            this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.tbValidation);
             // 
             // lblPhone
             // 
@@ -443,7 +450,7 @@ namespace KaingaRealEstate
             this.Controls.Add(this.lblSalary);
             this.Controls.Add(this.lblSuburb);
             this.Controls.Add(this.txtSuburb);
-            this.Controls.Add(this.lblSA);
+            this.Controls.Add(this.lblStreetAddress);
             this.Controls.Add(this.txtStreetAddress);
             this.Controls.Add(this.lblrequired2);
             this.Controls.Add(this.lblrequired1);
@@ -455,7 +462,7 @@ namespace KaingaRealEstate
             this.Controls.Add(this.cboAgent);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.lblLastName);
-            this.Controls.Add(this.lblAgentD);
+            this.Controls.Add(this.lblAgentID);
             this.Controls.Add(this.lblAgent);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnUpdateAgent);
@@ -484,13 +491,13 @@ namespace KaingaRealEstate
         private System.Windows.Forms.ComboBox cboAgent;
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.Label lblLastName;
-        private System.Windows.Forms.Label lblAgentD;
+        private System.Windows.Forms.Label lblAgentID;
         private System.Windows.Forms.Label lblAgent;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnUpdateAgent;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtStreetAddress;
-        private System.Windows.Forms.Label lblSA;
+        private System.Windows.Forms.Label lblStreetAddress;
         private System.Windows.Forms.TextBox txtSuburb;
         private System.Windows.Forms.Label lblSuburb;
         private System.Windows.Forms.Label lblSalary;
