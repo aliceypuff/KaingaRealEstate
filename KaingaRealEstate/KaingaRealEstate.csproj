@@ -178,6 +178,9 @@
     <Compile Include="ITClerkMainForm.Designer.cs">
       <DependentUpon>ITClerkMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="KaingaRealEstateDataSet.cs">
+      <DependentUpon>KaingaRealEstateDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="KaingaRealEstateDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

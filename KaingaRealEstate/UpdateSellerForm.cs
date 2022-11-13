@@ -69,7 +69,7 @@ namespace KaingaRealEstate
                 // extract ID
                 aSellerID = Convert.ToInt32(parts[0]);
                 // Get the position of the selected agent and assigns it to the Position property of cmSeller
-                cmSeller.Position = DC.suburbView.Find(aSellerID);
+                cmSeller.Position = DC.sellerView.Find(aSellerID);
                 // Get the datarow for the selected seller
                 DataRow drSeller = DC.dtSeller.Rows[cmSeller.Position];
                 // Populate seller textboxes

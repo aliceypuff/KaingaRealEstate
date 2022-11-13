@@ -57,46 +57,7 @@ namespace KaingaRealEstate
         private void RemoveBuyerSuburbForm_Load(object sender, EventArgs e)
         {
             LoadBuyers();
-            //string buyerText = "";
-            //// clears cboBuyer Combobox
-            //cboBuyer.Items.Clear();
-
-            //foreach (DataRow drBuyer in DC.dtBuyer.Rows)
-            //{
-            //    buyerText += drBuyer["BuyerID"];
-            //    buyerText += " " + drBuyer["LastName"];
-            //    buyerText += ", " + drBuyer["FirstName"];
-            //    cboBuyer.Items.Add(buyerText);
-            //    buyerText = "";
-            //}
-
-            //string buyerSuburbText = "";
-            //// clears lstSuburbsAssigned ListBox
-            //lstSuburbsAssigned.Items.Clear();
-
-            //foreach (DataRow drBuyerSuburb in DC.dtBuyerSuburb.Rows)
-            //{
-            //    buyerSuburbText += drBuyerSuburb["SuburbID"];
-            //    buyerSuburbText += ", " + drBuyerSuburb["Importance"];
-            //    lstSuburbsAssigned.Items.Add(buyerSuburbText);
-            //    buyerSuburbText = "";
-            //}
         }
-        //public void bindControls()
-        //{
-        //    // define currency manager items
-        //    cmBuyer = (CurrencyManager)this.BindingContext[DC.dsKainga, "Buyer"];
-
-        //    // Bind DataController data to textbox
-        //    // Buyer
-        //    txtBuyerID.DataBindings.Add("Text", DC.dsKainga, "Buyer.BuyerID");
-        //    txtLastName.DataBindings.Add("Text", DC.dsKainga, "Buyer.LastName");
-        //    txtFirstName.DataBindings.Add("Text", DC.dsKainga, "Buyer.FirstName");
-
-        //    // Show buyer suburb table to check if updated
-        //    //dgvBuyerSuburb.DataSource = DC.dsKainga;
-        //    //dgvBuyerSuburb.DataMember = "BuyerSuburb";
-        //}
 
         private void cboBuyer_SelectedIndexChanged(object sender, EventArgs e)
         {
