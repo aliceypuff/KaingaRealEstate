@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,10 +40,6 @@ namespace KaingaRealEstate
             cboSuburb.Items.Add(drSuburb["suburbID"] + (" ") + drSuburb["suburbName"] + (" ") + drSuburb["postcode"]);
             }
         }
-        private void UpdateSuburbForm_Load(object sender, EventArgs e)
-        {
-            LoadSuburbs();
-        }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
@@ -72,20 +69,12 @@ namespace KaingaRealEstate
                 txtSuburbName.Text = drSuburb["suburbName"].ToString();
                 txtPostcode.Text = drSuburb["postcode"].ToString();
             }
+            EnableUpdate(this);
         }
         private void btnUpdateSuburb_Click(object sender, EventArgs e)
         {
-            if (cboSuburb.SelectedIndex == 0) // cannot click it if the suburb is not selected 
-            {
-                // handle case where no suburb has been selected
-                MessageBox.Show("A suburb hasn't been selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (txtSuburbID.Text == "" || txtSuburbName.Text == "" || txtPostcode.Text == "")
-            {
-                // handle cases where any of the input fields are empty
-                MessageBox.Show("One or more field is blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
+            bool detailValid = ValidateChildren(ValidationConstraints.Enabled);
+            if (detailValid)
             {
                 // get data row for selected suburb
                 DataRow updateSuburbRow = DC.dtSuburb.Rows[cmSuburb.Position];
@@ -102,6 +91,78 @@ namespace KaingaRealEstate
                     LoadSuburbs();
                 }
             }
-        }   
+        }
+        private void DisableUpdate(Control parent)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    c.Enabled = false;
+                }
+            }
+        }
+        private void EnableUpdate(Control parent)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    c.Enabled = true;
+                }
+            }
+        }
+        private void UpdateSuburbForm_Load(object sender, EventArgs e)
+        {
+            ClearFields();
+            LoadSuburbs();
+            DisableUpdate(this);
+        }
+
+        private void tbValidation(object sender, CancelEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            string tbName = tb.Name;
+            Label tbLabel = this.Controls.Find("lbl" + tbName.Substring(3), true)[0] as Label;
+
+            if (validateContent(tb))
+            {
+                e.Cancel = false;
+                errorProviderDetails.SetError(tb, null);
+            }
+            else
+            {
+                e.Cancel = true;
+                tb.Focus();
+                errorProviderDetails.SetError(tb, $"{tbLabel.Text} is incorrect or missing.");
+            }
+        }
+        private bool validateContent(TextBox tb)
+        {
+            string tbName = tb.Name;
+            bool fieldIsValid = true;
+
+            if (string.IsNullOrEmpty(tb.Text))
+            {
+                fieldIsValid = false;
+            }
+
+            else if (tbName == "txtPostcode")
+            {
+                string postCode = tb.Text;
+                Regex regex = new Regex(@"^\d{4}$");
+                Match match = regex.Match(postCode);
+
+                fieldIsValid = match.Success;
+            }
+
+            else
+            {
+                string alpha = tb.Text;
+                fieldIsValid = alpha.All(x => char.IsLetter(x) || x == ' ');
+            }
+
+            return fieldIsValid;
+        }
     }   
 }

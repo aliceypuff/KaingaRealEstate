@@ -29,6 +29,7 @@ namespace KaingaRealEstate
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblInstruction1 = new System.Windows.Forms.Label();
             this.lblInstruction2 = new System.Windows.Forms.Label();
             this.txtPostcode = new System.Windows.Forms.TextBox();
@@ -45,7 +46,9 @@ namespace KaingaRealEstate
             this.lblrequired1 = new System.Windows.Forms.Label();
             this.lblrequired2 = new System.Windows.Forms.Label();
             this.kaingaRealEstateDataSet = new KaingaRealEstate.KaingaRealEstateDataSet();
+            this.errorProviderDetails = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kaingaRealEstateDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // lblInstruction1
@@ -77,6 +80,7 @@ namespace KaingaRealEstate
             this.txtPostcode.Name = "txtPostcode";
             this.txtPostcode.Size = new System.Drawing.Size(79, 27);
             this.txtPostcode.TabIndex = 53;
+            this.txtPostcode.Validating += new System.ComponentModel.CancelEventHandler(this.tbValidation);
             // 
             // txtSuburbName
             // 
@@ -85,6 +89,7 @@ namespace KaingaRealEstate
             this.txtSuburbName.Name = "txtSuburbName";
             this.txtSuburbName.Size = new System.Drawing.Size(272, 27);
             this.txtSuburbName.TabIndex = 51;
+            this.txtSuburbName.Validating += new System.ComponentModel.CancelEventHandler(this.tbValidation);
             // 
             // txtSuburbID
             // 
@@ -96,6 +101,7 @@ namespace KaingaRealEstate
             // 
             // cboSuburb
             // 
+            this.cboSuburb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSuburb.FormattingEnabled = true;
             this.cboSuburb.Location = new System.Drawing.Point(199, 103);
             this.cboSuburb.Name = "cboSuburb";
@@ -202,6 +208,10 @@ namespace KaingaRealEstate
             this.kaingaRealEstateDataSet.DataSetName = "KaingaRealEstateDataSet";
             this.kaingaRealEstateDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // errorProviderDetails
+            // 
+            this.errorProviderDetails.ContainerControl = this;
+            // 
             // UpdateSuburbForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -228,6 +238,7 @@ namespace KaingaRealEstate
             this.Text = "Update Suburbs";
             this.Load += new System.EventHandler(this.UpdateSuburbForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kaingaRealEstateDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +262,6 @@ namespace KaingaRealEstate
         private System.Windows.Forms.Label lblrequired1;
         private System.Windows.Forms.Label lblrequired2;
         private KaingaRealEstateDataSet kaingaRealEstateDataSet;
+        private System.Windows.Forms.ErrorProvider errorProviderDetails;
     }
 }

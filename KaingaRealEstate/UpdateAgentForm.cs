@@ -18,7 +18,6 @@ namespace KaingaRealEstate
         private AssistantAdministratorMainForm frmMenu;
         private int aAgentID;
         private CurrencyManager cmAgent;
-
         public UpdateAgentForm(DataController dc, AssistantAdministratorMainForm mnu)
         {
             InitializeComponent();
@@ -27,7 +26,6 @@ namespace KaingaRealEstate
             frmMenu.Hide();
             cmAgent = (CurrencyManager)this.BindingContext[DC.dsKainga, "AGENT"];
         }
-
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -186,6 +184,19 @@ namespace KaingaRealEstate
                 Match match = regex.Match(phoneNumber);
 
                 fieldIsValid = match.Success;
+            }
+
+            //else if (tbName == "streetAddress")
+            //{
+            //    string streetAddress = tb.Text;
+            //    fieldIsValid = streetAddress.All(x => char.IsLetterOrDigit(x) || char.IsWhiteSpace(x));
+            //    return fieldIsValid;
+            //}
+
+            else
+            {
+                string alpha = tb.Text;
+                fieldIsValid = alpha.All(x => char.IsLetter(x) || x == ' ');
             }
 
             return fieldIsValid;
